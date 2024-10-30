@@ -7,6 +7,7 @@ import { fetchUsers, TUser } from "../slices/userSlice";
 import { useEffect } from "react";
 import { changeLimit } from "../slices/dataSlice";
 import { Link } from "react-router-dom";
+import React, { lazy, Suspense } from 'react';
 import styled from "styled-components";
 
 const Main = () => {
@@ -22,6 +23,8 @@ const Main = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
+  const VideoPlayer = lazy(() => import('../components/Video'));
+
   return (
     <MainContent>
       <section className="about">
@@ -29,7 +32,9 @@ const Main = () => {
           <h1>Most important title on the page</h1>
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non labore adipisci fugiat corrupti nam quis, quia, id omnis dignissimos dolor iure animi odit et unde quam velit rem neque laboriosam</p>
         </div>
-        <VideoPlayer />
+        <Suspense fallback={<div>Loading...</div>}>
+          <VideoPlayer />
+        </Suspense>
       </section>
       <section className="items__section">
         <h2>Also very important title</h2>
