@@ -1,9 +1,27 @@
 import { Button } from "@mui/material";
-import styled from "styled-components";
 import VideoPlayer from "../components/Video";
 import Item from "../components/Item";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import { fetchUsers, TUser } from "../slices/userSlice";
+import { useEffect } from "react";
+import { changeLimit } from "../slices/dataSlice";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Main = () => {
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const users = useSelector<RootState, TUser[]>(
+    (state) => state.users.data
+  );
+  const limit = useSelector<RootState, number>((state) => state.data.limit);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
   return (
     <MainContent>
       <section className="about">
@@ -16,18 +34,17 @@ const Main = () => {
       <section className="items__section">
         <h2>Also very important title</h2>
         <div className="items">
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {users.filter((_, index) => index < limit).map(user =>
+            <Item user={user} key={user.id} />
+          )}
         </div>
-        <Button variant="outlined" >Contact us</Button>
+        <Button variant="outlined" onClick={() => dispatch(changeLimit())} disabled={limit >= users.length}>Показать еще</Button>
       </section>
       <section className="less">
         <h3>Less important title</h3>
-        <Button variant="outlined" >Contact us</Button>
+        <Link to='/contact'>
+          <Button variant="outlined" >Contact us</Button>
+        </Link>
       </section>
     </MainContent>
   );
@@ -86,6 +103,12 @@ flex-direction: column;
 }
 .items{
 grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media(max-width: 500px){
+.items{
+grid-template-columns: repeat(1, 1fr);
 }
 }
 `

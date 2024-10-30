@@ -5,6 +5,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 
 import styled from "styled-components";
+import Generated from "./pages/Generated"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/generation" element={<Generated />} />
         </Routes>
       </Container>
       <Footer />
