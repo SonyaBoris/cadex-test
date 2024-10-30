@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+### Инструкция по установке и запуску проекта
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Клонируйте репозиторий:   
+   git clone https://github.com/yourusername/projectname.git 
+2. Установите зависимости:   
+   npm install
+   # Или
+   yarn 
+3. Запустите приложение в режиме разработки:   
+   npm run dev
+   # Или
+   yarn dev 
+4. Откройте браузер и перейдите по адресу: http://localhost:3000/
 
-Currently, two official plugins are available:
+### Подробности о хостинге
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Проект развернут на платформе Netlify
+Ссылка на продакшн-версию: https://splendid-cendol-e48027.netlify.app/
 
-## Expanding the ESLint configuration
+### Использованные технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React – библиотека для создания пользовательских интерфейсов
+- TypeScript – статическая типизация для JavaScript
+- Redux Toolkit – управление состоянием приложения
+- Styled Components – стилизация компонентов
+- react-router-dom – маршрутизация в приложении
+- Axios – HTTP-клиент для работы с API
+- Material UI – компоненты пользовательского интерфейса
+- Vite – сборщик модулей и инструмент для разработки
 
-- Configure the top-level `parserOptions` property like this:
+### Стили
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+В проекте используются styled-components, что позволяет инкапсулировать стили внутри компонентов и обеспечивает легкость поддержки и масштабирования стилей
+Также применяется Material UI, предоставляющий готовые к использованию компоненты
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### SEO
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Для улучшения SEO применены следующие подходы:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Оптимизированная структура HTML-разметки с использованием семантических тегов
+- Применение ленивой загрузки изображений (lazy loading) для уменьшения времени загрузки страницы
+
+
+
+
+
+
